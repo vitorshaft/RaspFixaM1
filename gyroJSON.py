@@ -32,12 +32,13 @@ while True:
 		seg = tempo[5]
 		
 		dados['gyro'][0] = {
-		'date': data,
-		'hora':hora,
-		'minuto':minuto,
-		'segundo':seg,
-		'cosseno':Ax,
-		'seno':Ay
+		'dtg': (data,hora,minuto,seg),
+		'AzElPo':(Ax,Ay,Az),
+		'LatLongBase':('xx.xxxx','yy.yyyy','zz.zzzz'),
+		'posSat':('xx.xxxx','yy.yyyy','zzzzzz'),
+		'dtgRX':'aaaa-mm-dd-hh-mm-ss',
+		'dtgTele':'aaaa-mm-dd-hh-mm-ss',
+		'RSSI':'xxx'
 		}
 		print dados['gyro'][0]
 		with open('gyroRT.json','w') as BD:
