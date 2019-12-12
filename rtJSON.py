@@ -43,9 +43,9 @@ while True:
 		'dtgRX':DTG,
 		'dtgTele':DTG,
 		'RSSI':'xxx',
-		'Base1':(XYZ,DTG,xyz),
-		'Base2':(XYZ,DTG,xyz),
-		'Base3':(XYZ,DTG,xyz),
+		'Base1':{'posBase':(XYZ),'dtgBase':(DTG), 'posSat':(XYZ)},
+		'Base2':{'posBase':(XYZ),'dtgBase':(DTG), 'posSat':(XYZ)},
+		'Base3':{'posBase':(XYZ),'dtgBase':(DTG), 'posSat':(XYZ)},
 		'pkgCount':nPKG
 		}
 		print dados['realTime'][0]
@@ -55,10 +55,4 @@ while True:
 		sleep(1)
 	except:
 		pass
-		'''
-		NAO DEU CERTO: DEU ERRO DE FORMATACAO
-		'Base1':{'posBase':(XYZ),'dtgBase':(DTG), 'posSat':(XYZ),
-		'Base2':{'posBase':(XYZ),'dtgBase':(DTG), 'posSat':(XYZ),
-		'Base3':{'posBase':(XYZ),'dtgBase':(DTG), 'posSat':(XYZ),
-		'''
 
