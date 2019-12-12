@@ -10,7 +10,7 @@ from gyroConfig import ACCEL_YOUT_H as ACCEL_YOUT_H
 from gyroConfig import ACCEL_ZOUT_H as ACCEL_ZOUT_H
 
 dados = {}
-dados['gyro'] = [0]
+dados['realTime'] = [0]
 
 while True:
 	try:
@@ -30,21 +30,35 @@ while True:
 		hora = tempo[3]
 		minuto = tempo[4]
 		seg = tempo[5]
+		XYZ = 'xx.xxxx,yy.yyyy,zz.zzzz'
+		xyz = 'x,y,z'
+		DTG = 'aaaa-mm-dd-hh-mm-ss'
+		nPKG = 'xxxxxx'
 		
-		dados['gyro'][0] = {
+		dados['realTime'][0] = {
 		'dtg': (data,hora,minuto,seg),
 		'AzElPo':(Ax,Ay,Az),
-		'LatLongBase':('xx.xxxx','yy.yyyy','zz.zzzz'),
-		'posSat':('xx.xxxx','yy.yyyy','zzzzzz'),
-		'dtgRX':'aaaa-mm-dd-hh-mm-ss',
-		'dtgTele':'aaaa-mm-dd-hh-mm-ss',
-		'RSSI':'xxx'
+		'LatLongBase':(XYZ),
+		'posSat':(XYZ),
+		'dtgRX':DTG,
+		'dtgTele':DTG,
+		'RSSI':'xxx',
+		'Base1':(XYZ,DTG,xyz),
+		'Base2':(XYZ,DTG,xyz),
+		'Base3':(XYZ,DTG,xyz),
+		'pkgCount':nPKG
 		}
-		print dados['gyro'][0]
-		with open('gyroRT.json','w') as BD:
+		print dados['realTime'][0]
+		with open('RT.json','w') as BD:
 			json.dump(dados,BD)
-		os.system('sudo cp gyroRT.json /home/pi/FTP')
+		os.system('sudo cp RT.json /home/pi/FTP')
 		sleep(1)
 	except:
 		pass
+		'''
+		NAO DEU CERTO: DEU ERRO DE FORMATACAO
+		'Base1':{'posBase':(XYZ),'dtgBase':(DTG), 'posSat':(XYZ),
+		'Base2':{'posBase':(XYZ),'dtgBase':(DTG), 'posSat':(XYZ),
+		'Base3':{'posBase':(XYZ),'dtgBase':(DTG), 'posSat':(XYZ),
+		'''
 
